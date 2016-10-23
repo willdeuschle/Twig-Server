@@ -13,10 +13,10 @@ def simple_app(environ, start_response):
     start_response(status, headers)
     ret = {}
     if environ['REQUEST_METHOD'] == 'GET':
-        (title, article_body) = simplify(medium_url)
+        (title, article) = simplify(medium_url)
         # ret = ["%s: %s\n" % (key, value)
                # for key, value in environ.iteritems()]
-        ret = json.dumps({'title': title, 'article_body': article_body})
+        ret = json.dumps({'title': title, 'article': article})
     return ret
 
 httpd = make_server('', 8000, simple_app)

@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup, NavigableString
 
 invalid_tags = ['b', 'i', 'u', 'strong', 'p', 'em', 'a']
 
-data_arr = []
-
 def clean_text(tag):
     if tag.name in invalid_tags:
         s = ""
@@ -21,6 +19,7 @@ def clean_text(tag):
 
 
 def simplify(url):
+    data_arr = []
     page = requests.get(url).content
     soup_page = BeautifulSoup(page, 'html.parser')
     stuff = soup_page.find_all('p')
