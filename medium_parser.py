@@ -25,8 +25,8 @@ def simplify(url):
     stuff = soup_page.find_all('p')
     title = soup_page.find('h1', {'class': lambda x: 'graf--title' in x.split()})
     try:
-        title_string = title.string.encode('ascii', 'ignore')
-        # data_arr.append(title_string)
+        # title_string = title.string.encode('ascii', 'ignore')
+        title = title.string
     except:
         pass
     for datum in stuff:
@@ -38,7 +38,7 @@ def simplify(url):
             pass
 
     article_string = " ".join(data_arr)
-    return(title_string, article_string)
+    return(title, article_string)
 
 
 # if __name__ == '__main__':
