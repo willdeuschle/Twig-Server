@@ -2,7 +2,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup, NavigableString
 
-invalid_tags = ['b', 'i', 'u', 'strong', 'p', 'em', 'a']
+invalid_tags = ['b', 'i', 'u', 'strong', 'p', 'em', 'a', 'span']
 
 def clean_text(tag):
     if tag.name in invalid_tags:
