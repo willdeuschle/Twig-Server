@@ -27,19 +27,24 @@ def simplify(url):
     try:
         # title_string = title.string.encode('ascii', 'ignore')
         title = title.string
-    except:
+    except Exception, e:
+        print "The title exception: ", e
         pass
     for datum in stuff:
         try:
-            new_datum = clean_text(datum)
-            new_datum_string = new_datum.encode('ascii', 'ignore')
-            data_arr.append(new_datum_string)
-        except:
+            if "card-description" in  datum.get('class', []):
+                pass
+            else:
+                new_datum = clean_text(datum)
+                new_datum_string = new_datum.encode('ascii', 'ignore')
+                data_arr.append(new_datum_string)
+        except Exception, e:
+            print "The exception: ", e
             pass
 
     article_string = " ".join(data_arr)
     return(title, article_string)
 
 
-# if __name__ == '__main__':
-    # simplify(sys.argv[1])
+if __name__ == '__main__':
+    simplify(sys.argv[1])
